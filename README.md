@@ -12,6 +12,22 @@ This repository defines the canonical data shapes for bird observation and biodi
 
 **Namespace:** `tech.birdlife.schema`
 
+## Resolution API [![live](https://img.shields.io/badge/status-live-brightgreen)](https://birdlife.tech/docs)
+
+Need deterministic IDs without running your own registry? Use the **[Resolution API](https://birdlife.tech/docs)**:
+
+```bash
+# Taxon → always same UUID for same scientific name
+curl "https://birdlife.tech/api/v1/taxon/resolve?name=Erithacus+rubecula"
+
+# Location → deduplicated by coordinates (~11m precision)
+curl -X POST https://birdlife.tech/api/v1/location/resolve \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Minsmere", "latitude": 52.2456, "longitude": 1.6234}'
+```
+
+All API responses are validated against this schema.
+
 ## Installation
 
 ```bash
