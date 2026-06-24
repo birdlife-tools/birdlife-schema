@@ -3,7 +3,7 @@
 Language-agnostic data contract schemas for the BirdLife open-source ecosystem.
 
 [![npm version](https://img.shields.io/npm/v/birdlife-schema)](https://www.npmjs.com/package/birdlife-schema)
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 [![Matrix](https://img.shields.io/badge/Matrix-%23birdlife--schema-black?logo=matrix)](https://matrix.to/#/#birdlife-schema:matrix.org)
 
 ## Overview
@@ -166,7 +166,7 @@ See [mappings/](mappings/) for field-level mappings to these standards.
 
 ## License
 
-This project is licensed under the **Apache License 2.0** — see [LICENSE](LICENSE) for details.
+This project is licensed under the **MIT License** — see [LICENSE](LICENSE) for details.
 
 ### Third-Party Attribution
 
