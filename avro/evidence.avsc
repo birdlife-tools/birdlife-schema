@@ -1,0 +1,65 @@
+{
+  "type": "record",
+  "name": "Evidence",
+  "namespace": "tech.birdlife.schema",
+  "doc": "Documentation supporting an observation (photos, audio, etc.).",
+  "fields": [
+    {
+      "name": "evidenceID",
+      "type": "string",
+      "doc": "Unique identifier (random UUID v4)."
+    },
+    {
+      "name": "type",
+      "type": {
+        "type": "enum",
+        "name": "EvidenceType",
+        "symbols": ["PHOTO", "AUDIO", "VIDEO", "SPECIMEN", "WRITTEN"],
+        "doc": "Evidence types: PHOTO=still image, AUDIO=sound recording, VIDEO=video recording, SPECIMEN=physical specimen, WRITTEN=field notes/description"
+      },
+      "doc": "Type of evidence."
+    },
+    {
+      "name": "url",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "URL to the media file or resource."
+    },
+    {
+      "name": "thumbnailUrl",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "URL to a thumbnail version (for images/video)."
+    },
+    {
+      "name": "license",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "License for the evidence (e.g., CC BY 4.0, CC0)."
+    },
+    {
+      "name": "attribution",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Attribution text for the creator (photographer, recordist)."
+    },
+    {
+      "name": "capturedAt",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "ISO 8601 timestamp when the evidence was captured."
+    },
+    {
+      "name": "notes",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Additional notes about the evidence."
+    },
+    {
+      "name": "extensions",
+      "type": ["null", {"type": "map", "values": "string"}],
+      "default": null,
+      "doc": "Tool-specific extensions. Keys must be namespaced: namespace.fieldName."
+    }
+  ]
+}

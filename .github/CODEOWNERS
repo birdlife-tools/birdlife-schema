@@ -1,0 +1,7 @@
+# Schema changes require maintainer approval
+
+*                     @sreten
+/avro/                @sreten
+/json-schema/         @sreten
+VERSION               @sreten
+CHANGELOG.md          @sreten

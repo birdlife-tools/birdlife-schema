@@ -1,0 +1,97 @@
+{
+  "type": "record",
+  "name": "Taxon",
+  "namespace": "tech.birdlife.schema",
+  "doc": "Species taxonomy record. Maps to Darwin Core Taxon class (dwc:Taxon).",
+  "fields": [
+    {
+      "name": "taxonID",
+      "type": "string",
+      "doc": "Unique identifier (UUID v5 from scientificName). Maps to dwc:taxonID."
+    },
+    {
+      "name": "slug",
+      "type": "string",
+      "doc": "URL-safe identifier auto-generated from scientificName (lowercase, hyphenated)."
+    },
+    {
+      "name": "scientificName",
+      "type": "string",
+      "doc": "Full scientific name including authorship. Maps to dwc:scientificName."
+    },
+    {
+      "name": "vernacularNames",
+      "type": ["null", {"type": "map", "values": "string"}],
+      "default": null,
+      "doc": "Common names by locale code (ISO 639-1). Example: {\"en\": \"European Robin\", \"de\": \"Rotkehlchen\"}. Maps to dwc:vernacularName."
+    },
+    {
+      "name": "taxonRank",
+      "type": {
+        "type": "enum",
+        "name": "TaxonRank",
+        "symbols": ["KINGDOM", "PHYLUM", "CLASS", "ORDER", "FAMILY", "GENUS", "SPECIES", "SUBSPECIES"]
+      },
+      "doc": "Taxonomic rank. Maps to dwc:taxonRank."
+    },
+    {
+      "name": "kingdom",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Kingdom name (e.g., Animalia). Maps to dwc:kingdom."
+    },
+    {
+      "name": "phylum",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Phylum name (e.g., Chordata). Maps to dwc:phylum."
+    },
+    {
+      "name": "class",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Class name (e.g., Aves). Maps to dwc:class."
+    },
+    {
+      "name": "order",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Order name (e.g., Passeriformes). Maps to dwc:order."
+    },
+    {
+      "name": "family",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Family name (e.g., Muscicapidae). Maps to dwc:family."
+    },
+    {
+      "name": "genus",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Genus name (e.g., Erithacus). Maps to dwc:genus."
+    },
+    {
+      "name": "iucnStatus",
+      "type": ["null", {
+        "type": "enum",
+        "name": "IUCNStatus",
+        "symbols": ["LC", "NT", "VU", "EN", "CR", "EW", "EX", "DD", "NE"],
+        "doc": "IUCN Red List categories: LC=Least Concern, NT=Near Threatened, VU=Vulnerable, EN=Endangered, CR=Critically Endangered, EW=Extinct in Wild, EX=Extinct, DD=Data Deficient, NE=Not Evaluated"
+      }],
+      "default": null,
+      "doc": "IUCN Red List conservation status."
+    },
+    {
+      "name": "gbifKey",
+      "type": ["null", "long"],
+      "default": null,
+      "doc": "GBIF backbone taxonomy key for interoperability."
+    },
+    {
+      "name": "extensions",
+      "type": ["null", {"type": "map", "values": "string"}],
+      "default": null,
+      "doc": "Tool-specific extensions. Keys must be namespaced: namespace.fieldName (e.g., myapp.customField)."
+    }
+  ]
+}

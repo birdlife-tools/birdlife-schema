@@ -1,0 +1,21 @@
+{
+  "taxonID": "8f14e45f-ceea-467f-a8f8-5c8e1c8d0a3b",
+  "slug": "erithacus-rubecula",
+  "scientificName": "Erithacus rubecula",
+  "vernacularNames": {
+    "en": "European Robin",
+    "de": "Rotkehlchen",
+    "fr": "Rougegorge familier",
+    "sr": "Црвендаћ"
+  },
+  "taxonRank": "SPECIES",
+  "kingdom": "Animalia",
+  "phylum": "Chordata",
+  "class": "Aves",
+  "order": "Passeriformes",
+  "family": "Muscicapidae",
+  "genus": "Erithacus",
+  "iucnStatus": "LC",
+  "gbifKey": 2492322,
+  "extensions": null
+}

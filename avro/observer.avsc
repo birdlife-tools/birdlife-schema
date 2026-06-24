@@ -1,0 +1,43 @@
+{
+  "type": "record",
+  "name": "Observer",
+  "namespace": "tech.birdlife.schema",
+  "doc": "Privacy-conscious observer identity. Pseudonymous by default.",
+  "fields": [
+    {
+      "name": "observerID",
+      "type": "string",
+      "doc": "Unique identifier (random UUID v4)."
+    },
+    {
+      "name": "slug",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "URL-safe identifier from displayName if provided (lowercase, hyphenated)."
+    },
+    {
+      "name": "displayName",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Optional display name (pseudonym, not real name). User's choice to provide."
+    },
+    {
+      "name": "anonymized",
+      "type": "boolean",
+      "default": true,
+      "doc": "If true, tools should NOT correlate this observer across datasets. If false, observer consents to being linkable."
+    },
+    {
+      "name": "affiliations",
+      "type": ["null", {"type": "array", "items": "string"}],
+      "default": null,
+      "doc": "Optional organizational affiliations (e.g., bird clubs, research institutions)."
+    },
+    {
+      "name": "extensions",
+      "type": ["null", {"type": "map", "values": "string"}],
+      "default": null,
+      "doc": "Tool-specific extensions. Keys must be namespaced: namespace.fieldName."
+    }
+  ]
+}

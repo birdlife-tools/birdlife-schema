@@ -1,0 +1,77 @@
+{
+  "type": "record",
+  "name": "Location",
+  "namespace": "tech.birdlife.schema",
+  "doc": "Geographic location record. Maps to Darwin Core Location class (dwc:Location).",
+  "fields": [
+    {
+      "name": "locationID",
+      "type": "string",
+      "doc": "Unique identifier (UUID v5 from coordinates if provided, else UUID v4). Maps to dwc:locationID."
+    },
+    {
+      "name": "slug",
+      "type": "string",
+      "doc": "URL-safe identifier auto-generated from name (lowercase, hyphenated)."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "doc": "Human-readable location name."
+    },
+    {
+      "name": "decimalLatitude",
+      "type": ["null", "double"],
+      "default": null,
+      "doc": "Latitude in decimal degrees (WGS84). Maps to dwc:decimalLatitude."
+    },
+    {
+      "name": "decimalLongitude",
+      "type": ["null", "double"],
+      "default": null,
+      "doc": "Longitude in decimal degrees (WGS84). Maps to dwc:decimalLongitude."
+    },
+    {
+      "name": "coordinateUncertaintyInMeters",
+      "type": ["null", "int"],
+      "default": null,
+      "doc": "Uncertainty radius in meters. Maps to dwc:coordinateUncertaintyInMeters."
+    },
+    {
+      "name": "geodeticDatum",
+      "type": "string",
+      "default": "WGS84",
+      "doc": "Geodetic datum (default WGS84). Maps to dwc:geodeticDatum."
+    },
+    {
+      "name": "country",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Country name. Maps to dwc:country."
+    },
+    {
+      "name": "countryCode",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "ISO 3166-1 alpha-2 country code. Maps to dwc:countryCode."
+    },
+    {
+      "name": "locality",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Specific location description. Maps to dwc:locality."
+    },
+    {
+      "name": "habitat",
+      "type": ["null", {"type": "array", "items": "string"}],
+      "default": null,
+      "doc": "Habitat types present at location. Maps to dwc:habitat."
+    },
+    {
+      "name": "extensions",
+      "type": ["null", {"type": "map", "values": "string"}],
+      "default": null,
+      "doc": "Tool-specific extensions. Keys must be namespaced: namespace.fieldName."
+    }
+  ]
+}

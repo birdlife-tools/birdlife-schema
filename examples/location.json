@@ -1,0 +1,14 @@
+{
+  "locationID": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "slug": "rspb-minsmere",
+  "name": "RSPB Minsmere",
+  "decimalLatitude": 52.2456,
+  "decimalLongitude": 1.6234,
+  "coordinateUncertaintyInMeters": 100,
+  "geodeticDatum": "WGS84",
+  "country": "United Kingdom",
+  "countryCode": "GB",
+  "locality": "Westleton, Suffolk",
+  "habitat": ["wetland", "reedbed", "woodland", "heathland"],
+  "extensions": null
+}

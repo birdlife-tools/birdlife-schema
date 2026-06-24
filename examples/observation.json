@@ -1,0 +1,17 @@
+{
+  "occurrenceID": "7c9e6679-7425-40de-944b-e07fc1f90ae7",
+  "taxonID": "8f14e45f-ceea-467f-a8f8-5c8e1c8d0a3b",
+  "eventDate": "2026-06-24T08:30:00Z",
+  "locationID": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "observerID": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+  "count": 3,
+  "countType": "EXACT",
+  "behavior": ["singing", "feeding"],
+  "protocolID": "550e8400-e29b-41d4-a716-446655440000",
+  "evidenceIDs": ["6ba7b810-9dad-11d1-80b4-00c04fd430c8"],
+  "remarks": "Three robins observed in woodland edge, one adult male singing prominently.",
+  "extensions": {
+    "myapp.nestingStatus": "possible",
+    "myapp.breedingCode": "S"
+  }
+}

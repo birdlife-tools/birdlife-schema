@@ -1,0 +1,68 @@
+{
+  "type": "record",
+  "name": "Protocol",
+  "namespace": "tech.birdlife.schema",
+  "doc": "Survey protocol describing how an observation was conducted.",
+  "fields": [
+    {
+      "name": "protocolID",
+      "type": "string",
+      "doc": "Unique identifier (random UUID v4)."
+    },
+    {
+      "name": "type",
+      "type": {
+        "type": "enum",
+        "name": "ProtocolType",
+        "symbols": [
+          "CASUAL",
+          "STATIONARY",
+          "TRAVELING",
+          "AREA",
+          "POINT_COUNT",
+          "MIST_NETTING",
+          "PLAYBACK",
+          "NOCTURNAL"
+        ],
+        "doc": "Survey protocol types: CASUAL=incidental sighting, STATIONARY=fixed point, TRAVELING=transect/walk, AREA=systematic area survey, POINT_COUNT=timed count at point, MIST_NETTING=capture-based, PLAYBACK=audio playback, NOCTURNAL=night survey"
+      },
+      "doc": "Type of survey protocol used."
+    },
+    {
+      "name": "effortMinutes",
+      "type": ["null", "int"],
+      "default": null,
+      "doc": "Duration of survey effort in minutes."
+    },
+    {
+      "name": "distanceKm",
+      "type": ["null", "double"],
+      "default": null,
+      "doc": "Distance covered in kilometers (for traveling protocol)."
+    },
+    {
+      "name": "areaHa",
+      "type": ["null", "double"],
+      "default": null,
+      "doc": "Area surveyed in hectares (for area protocol)."
+    },
+    {
+      "name": "numberOfObservers",
+      "type": ["null", "int"],
+      "default": null,
+      "doc": "Number of observers participating in the survey."
+    },
+    {
+      "name": "allSpeciesReported",
+      "type": "boolean",
+      "default": false,
+      "doc": "If true, this is a complete checklist (all species seen were reported). If false, incomplete/targeted."
+    },
+    {
+      "name": "extensions",
+      "type": ["null", {"type": "map", "values": "string"}],
+      "default": null,
+      "doc": "Tool-specific extensions. Keys must be namespaced: namespace.fieldName."
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "type": "record",
+  "name": "Observation",
+  "namespace": "tech.birdlife.schema",
+  "doc": "Bird observation occurrence record. Maps to Darwin Core Occurrence class (dwc:Occurrence).",
+  "fields": [
+    {
+      "name": "occurrenceID",
+      "type": "string",
+      "doc": "Unique identifier (random UUID v4). Maps to dwc:occurrenceID."
+    },
+    {
+      "name": "taxonID",
+      "type": "string",
+      "doc": "Reference to Taxon entity (UUID). Maps to dwc:taxonID."
+    },
+    {
+      "name": "eventDate",
+      "type": "string",
+      "doc": "ISO 8601 date/time of the observation. Maps to dwc:eventDate."
+    },
+    {
+      "name": "locationID",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Reference to Location entity (UUID). Maps to dwc:locationID."
+    },
+    {
+      "name": "observerID",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Reference to Observer entity (UUID). Maps to dwc:recordedBy."
+    },
+    {
+      "name": "count",
+      "type": ["null", "int"],
+      "default": null,
+      "doc": "Number of individuals observed. Null indicates presence-only. Maps to dwc:individualCount."
+    },
+    {
+      "name": "countType",
+      "type": ["null", {
+        "type": "enum",
+        "name": "CountType",
+        "symbols": ["EXACT", "ESTIMATE", "X_PLUS", "PRESENT"],
+        "doc": "Count precision: EXACT=exact count, ESTIMATE=estimated count, X_PLUS=at least X individuals, PRESENT=presence only (no count)"
+      }],
+      "default": null,
+      "doc": "Type of count (exact, estimate, minimum, or presence-only)."
+    },
+    {
+      "name": "behavior",
+      "type": ["null", {"type": "array", "items": "string"}],
+      "default": null,
+      "doc": "Observed behaviors (e.g., feeding, singing, nesting). Maps to dwc:behavior."
+    },
+    {
+      "name": "protocolID",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Reference to Protocol entity (UUID)."
+    },
+    {
+      "name": "evidenceIDs",
+      "type": ["null", {"type": "array", "items": "string"}],
+      "default": null,
+      "doc": "References to Evidence entities (UUIDs)."
+    },
+    {
+      "name": "remarks",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Additional notes about the observation. Maps to dwc:occurrenceRemarks."
+    },
+    {
+      "name": "extensions",
+      "type": ["null", {"type": "map", "values": "string"}],
+      "default": null,
+      "doc": "Tool-specific extensions. Keys must be namespaced: namespace.fieldName."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "protocolID": "550e8400-e29b-41d4-a716-446655440000",
+  "type": "TRAVELING",
+  "effortMinutes": 120,
+  "distanceKm": 3.5,
+  "areaHa": null,
+  "numberOfObservers": 2,
+  "allSpeciesReported": true,
+  "extensions": null
+}
