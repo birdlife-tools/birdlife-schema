@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://birdlife.tech/schema/protocol.json",
+  "title": "Protocol",
+  "type": "object",
+  "properties": {
+    "protocolID": {
+      "type": "string",
+      "description": "Unique identifier (random UUID v4)."
+    },
+    "type": {
+      "$ref": "#/$defs/ProtocolType",
+      "description": "Type of survey protocol used."
+    },
+    "effortMinutes": {
+      "type": "integer",
+      "description": "Duration of survey effort in minutes."
+    },
+    "distanceKm": {
+      "type": "number",
+      "description": "Distance covered in kilometers (for traveling protocol)."
+    },
+    "areaHa": {
+      "type": "number",
+      "description": "Area surveyed in hectares (for area protocol)."
+    },
+    "numberOfObservers": {
+      "type": "integer",
+      "description": "Number of observers participating in the survey."
+    },
+    "allSpeciesReported": {
+      "type": "boolean",
+      "description": "If true, this is a complete checklist (all species seen were reported). If false, incomplete/targeted."
+    },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Tool-specific extensions. Keys must be namespaced: namespace.fieldName."
+    }
+  },
+  "required": [
+    "protocolID",
+    "type",
+    "allSpeciesReported"
+  ],
+  "additionalProperties": false,
+  "description": "Survey protocol describing how an observation was conducted.",
+  "$defs": {
+    "ProtocolType": {
+      "type": "string",
+      "enum": [
+        "CASUAL",
+        "STATIONARY",
+        "TRAVELING",
+        "AREA",
+        "POINT_COUNT",
+        "MIST_NETTING",
+        "PLAYBACK",
+        "NOCTURNAL"
+      ],
+      "description": "Survey protocol types: CASUAL=incidental sighting, STATIONARY=fixed point, TRAVELING=transect/walk, AREA=systematic area survey, POINT_COUNT=timed count at point, MIST_NETTING=capture-based, PLAYBACK=audio playback, NOCTURNAL=night survey"
+    }
+  }
+}

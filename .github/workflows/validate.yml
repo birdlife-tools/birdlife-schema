@@ -23,3 +23,17 @@ jobs:
 
       - name: Run validation
         run: npm test
+
+      - name: Check JSON Schema is up to date
+        run: |
+          npm run generate
+          if [ -n "$(git status --porcelain json-schema/)" ]; then
+            echo "❌ JSON Schema files are out of date!"
+            echo ""
+            echo "Changed files:"
+            git status --porcelain json-schema/
+            echo ""
+            echo "Run 'npm run generate' locally and commit the changes."
+            exit 1
+          fi
+          echo "✓ JSON Schema files are up to date"

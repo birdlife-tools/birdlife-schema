@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://birdlife.tech/schema/observer.json",
+  "title": "Observer",
+  "type": "object",
+  "properties": {
+    "observerID": {
+      "type": "string",
+      "description": "Unique identifier (random UUID v4)."
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL-safe identifier from displayName if provided (lowercase, hyphenated)."
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Optional display name (pseudonym, not real name). User's choice to provide."
+    },
+    "anonymized": {
+      "type": "boolean",
+      "description": "If true, tools should NOT correlate this observer across datasets. If false, observer consents to being linkable."
+    },
+    "affiliations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Optional organizational affiliations (e.g., bird clubs, research institutions)."
+    },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Tool-specific extensions. Keys must be namespaced: namespace.fieldName."
+    }
+  },
+  "required": [
+    "observerID",
+    "anonymized"
+  ],
+  "additionalProperties": false,
+  "description": "Privacy-conscious observer identity. Pseudonymous by default."
+}
