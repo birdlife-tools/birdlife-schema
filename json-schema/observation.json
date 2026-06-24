@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://birdlife.tech/schema/observation.json",
+  "title": "Observation",
+  "type": "object",
+  "properties": {
+    "occurrenceID": {
+      "type": "string",
+      "description": "Unique identifier (random UUID v4). Maps to dwc:occurrenceID."
+    },
+    "taxonID": {
+      "type": "string",
+      "description": "Reference to Taxon entity (UUID). Maps to dwc:taxonID."
+    },
+    "eventDate": {
+      "type": "string",
+      "description": "ISO 8601 date/time of the observation. Maps to dwc:eventDate."
+    },
+    "locationID": {
+      "type": "string",
+      "description": "Reference to Location entity (UUID). Maps to dwc:locationID."
+    },
+    "observerID": {
+      "type": "string",
+      "description": "Reference to Observer entity (UUID). Maps to dwc:recordedBy."
+    },
+    "count": {
+      "type": "integer",
+      "description": "Number of individuals observed. Null indicates presence-only. Maps to dwc:individualCount."
+    },
+    "countType": {
+      "$ref": "#/$defs/CountType",
+      "description": "Type of count (exact, estimate, minimum, or presence-only)."
+    },
+    "behavior": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Observed behaviors (e.g., feeding, singing, nesting). Maps to dwc:behavior."
+    },
+    "protocolID": {
+      "type": "string",
+      "description": "Reference to Protocol entity (UUID)."
+    },
+    "evidenceIDs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "References to Evidence entities (UUIDs)."
+    },
+    "remarks": {
+      "type": "string",
+      "description": "Additional notes about the observation. Maps to dwc:occurrenceRemarks."
+    },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Tool-specific extensions. Keys must be namespaced: namespace.fieldName."
+    }
+  },
+  "required": [
+    "occurrenceID",
+    "taxonID",
+    "eventDate"
+  ],
+  "additionalProperties": false,
+  "description": "Bird observation occurrence record. Maps to Darwin Core Occurrence class (dwc:Occurrence).",
+  "$defs": {
+    "CountType": {
+      "type": "string",
+      "enum": [
+        "EXACT",
+        "ESTIMATE",
+        "X_PLUS",
+        "PRESENT"
+      ],
+      "description": "Count precision: EXACT=exact count, ESTIMATE=estimated count, X_PLUS=at least X individuals, PRESENT=presence only (no count)"
+    }
+  }
+}

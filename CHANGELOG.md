@@ -7,16 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-06-24
+
+### Added
+- CLI tool (`birdlife-schema`) for validating data against schemas
+- JSON Schema generation from Avro schemas
+- CI check to ensure JSON Schema files are up to date
+
+### Changed
+- Moved `avsc` from devDependencies to dependencies (required for CLI)
+
+## [0.1.0] - 2026-06-24
+
 ### Added
 - Initial Tier 1 entity schemas: Taxon, Observation, Location, Observer, Protocol, Evidence
 - Darwin Core term mappings
 - Example JSON instances for each entity
 - Schema validation tooling
 - CI/CD workflows for schema validation and compatibility checking
-
-## [0.1.0] - 2026-06-24
-
-### Added
 - Repository initialization
 - Project documentation and governance structure
 - Apache 2.0 license with Darwin Core (CC BY 4.0) attribution

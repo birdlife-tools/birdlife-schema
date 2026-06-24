@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://birdlife.tech/schema/evidence.json",
+  "title": "Evidence",
+  "type": "object",
+  "properties": {
+    "evidenceID": {
+      "type": "string",
+      "description": "Unique identifier (random UUID v4)."
+    },
+    "type": {
+      "$ref": "#/$defs/EvidenceType",
+      "description": "Type of evidence."
+    },
+    "url": {
+      "type": "string",
+      "description": "URL to the media file or resource."
+    },
+    "thumbnailUrl": {
+      "type": "string",
+      "description": "URL to a thumbnail version (for images/video)."
+    },
+    "license": {
+      "type": "string",
+      "description": "License for the evidence (e.g., CC BY 4.0, CC0)."
+    },
+    "attribution": {
+      "type": "string",
+      "description": "Attribution text for the creator (photographer, recordist)."
+    },
+    "capturedAt": {
+      "type": "string",
+      "description": "ISO 8601 timestamp when the evidence was captured."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes about the evidence."
+    },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Tool-specific extensions. Keys must be namespaced: namespace.fieldName."
+    }
+  },
+  "required": [
+    "evidenceID",
+    "type"
+  ],
+  "additionalProperties": false,
+  "description": "Documentation supporting an observation (photos, audio, etc.).",
+  "$defs": {
+    "EvidenceType": {
+      "type": "string",
+      "enum": [
+        "PHOTO",
+        "AUDIO",
+        "VIDEO",
+        "SPECIMEN",
+        "WRITTEN"
+      ],
+      "description": "Evidence types: PHOTO=still image, AUDIO=sound recording, VIDEO=video recording, SPECIMEN=physical specimen, WRITTEN=field notes/description"
+    }
+  }
+}

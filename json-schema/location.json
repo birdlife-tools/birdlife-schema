@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://birdlife.tech/schema/location.json",
+  "title": "Location",
+  "type": "object",
+  "properties": {
+    "locationID": {
+      "type": "string",
+      "description": "Unique identifier (UUID v5 from coordinates if provided, else UUID v4). Maps to dwc:locationID."
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL-safe identifier auto-generated from name (lowercase, hyphenated)."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable location name."
+    },
+    "decimalLatitude": {
+      "type": "number",
+      "description": "Latitude in decimal degrees (WGS84). Maps to dwc:decimalLatitude."
+    },
+    "decimalLongitude": {
+      "type": "number",
+      "description": "Longitude in decimal degrees (WGS84). Maps to dwc:decimalLongitude."
+    },
+    "coordinateUncertaintyInMeters": {
+      "type": "integer",
+      "description": "Uncertainty radius in meters. Maps to dwc:coordinateUncertaintyInMeters."
+    },
+    "geodeticDatum": {
+      "type": "string",
+      "description": "Geodetic datum (default WGS84). Maps to dwc:geodeticDatum."
+    },
+    "country": {
+      "type": "string",
+      "description": "Country name. Maps to dwc:country."
+    },
+    "countryCode": {
+      "type": "string",
+      "description": "ISO 3166-1 alpha-2 country code. Maps to dwc:countryCode."
+    },
+    "locality": {
+      "type": "string",
+      "description": "Specific location description. Maps to dwc:locality."
+    },
+    "habitat": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Habitat types present at location. Maps to dwc:habitat."
+    },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Tool-specific extensions. Keys must be namespaced: namespace.fieldName."
+    }
+  },
+  "required": [
+    "locationID",
+    "slug",
+    "name",
+    "geodeticDatum"
+  ],
+  "additionalProperties": false,
+  "description": "Geographic location record. Maps to Darwin Core Location class (dwc:Location)."
+}

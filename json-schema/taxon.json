@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://birdlife.tech/schema/taxon.json",
+  "title": "Taxon",
+  "type": "object",
+  "properties": {
+    "taxonID": {
+      "type": "string",
+      "description": "Unique identifier (UUID v5 from scientificName). Maps to dwc:taxonID."
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL-safe identifier auto-generated from scientificName (lowercase, hyphenated)."
+    },
+    "scientificName": {
+      "type": "string",
+      "description": "Full scientific name including authorship. Maps to dwc:scientificName."
+    },
+    "vernacularNames": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Common names by locale code (ISO 639-1). Example: {\"en\": \"European Robin\", \"de\": \"Rotkehlchen\"}. Maps to dwc:vernacularName."
+    },
+    "taxonRank": {
+      "$ref": "#/$defs/TaxonRank",
+      "description": "Taxonomic rank. Maps to dwc:taxonRank."
+    },
+    "kingdom": {
+      "type": "string",
+      "description": "Kingdom name (e.g., Animalia). Maps to dwc:kingdom."
+    },
+    "phylum": {
+      "type": "string",
+      "description": "Phylum name (e.g., Chordata). Maps to dwc:phylum."
+    },
+    "class": {
+      "type": "string",
+      "description": "Class name (e.g., Aves). Maps to dwc:class."
+    },
+    "order": {
+      "type": "string",
+      "description": "Order name (e.g., Passeriformes). Maps to dwc:order."
+    },
+    "family": {
+      "type": "string",
+      "description": "Family name (e.g., Muscicapidae). Maps to dwc:family."
+    },
+    "genus": {
+      "type": "string",
+      "description": "Genus name (e.g., Erithacus). Maps to dwc:genus."
+    },
+    "iucnStatus": {
+      "$ref": "#/$defs/IUCNStatus",
+      "description": "IUCN Red List conservation status."
+    },
+    "gbifKey": {
+      "type": "integer",
+      "description": "GBIF backbone taxonomy key for interoperability."
+    },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Tool-specific extensions. Keys must be namespaced: namespace.fieldName (e.g., myapp.customField)."
+    }
+  },
+  "required": [
+    "taxonID",
+    "slug",
+    "scientificName",
+    "taxonRank"
+  ],
+  "additionalProperties": false,
+  "description": "Species taxonomy record. Maps to Darwin Core Taxon class (dwc:Taxon).",
+  "$defs": {
+    "TaxonRank": {
+      "type": "string",
+      "enum": [
+        "KINGDOM",
+        "PHYLUM",
+        "CLASS",
+        "ORDER",
+        "FAMILY",
+        "GENUS",
+        "SPECIES",
+        "SUBSPECIES"
+      ]
+    },
+    "IUCNStatus": {
+      "type": "string",
+      "enum": [
+        "LC",
+        "NT",
+        "VU",
+        "EN",
+        "CR",
+        "EW",
+        "EX",
+        "DD",
+        "NE"
+      ],
+      "description": "IUCN Red List categories: LC=Least Concern, NT=Near Threatened, VU=Vulnerable, EN=Endangered, CR=Critically Endangered, EW=Extinct in Wild, EX=Extinct, DD=Data Deficient, NE=Not Evaluated"
+    }
+  }
+}
