@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-06-25
+
+### Added
+- npm publishing via `@birdlife-tools/birdlife-schema` scoped package
+- Automated organization README version updates on release
+
+### Changed
+- Package name scoped to `@birdlife-tools/birdlife-schema`
+
 ## [0.2.0] - 2026-06-24
 
 ### Added
