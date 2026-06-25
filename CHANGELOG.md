@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.4] - 2026-06-25
+
+### Fixed
+- Org README update now replaces all version references (badge, alt text, release link)
+
 ## [0.3.3] - 2026-06-25
 
 ### Fixed
