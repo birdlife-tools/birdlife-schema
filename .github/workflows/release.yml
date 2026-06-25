@@ -69,10 +69,15 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Update organization README
-        if: steps.check_tag.outputs.exists == 'false' && secrets.ORG_PAT != ''
+        if: steps.check_tag.outputs.exists == 'false'
         env:
           GH_TOKEN: ${{ secrets.ORG_PAT }}
         run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "ORG_PAT not set, skipping README update"
+            exit 0
+          fi
+
           VERSION="${{ steps.version.outputs.version }}"
 
           # Clone .github repo
