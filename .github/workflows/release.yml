@@ -67,3 +67,43 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Update organization README
+        if: steps.check_tag.outputs.exists == 'false' && secrets.ORG_PAT != ''
+        env:
+          GH_TOKEN: ${{ secrets.ORG_PAT }}
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+
+          # Clone .github repo
+          git clone https://x-access-token:${GH_TOKEN}@github.com/birdlife-tools/.github.git org-readme
+          cd org-readme
+
+          # Configure git
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Update version badge in README
+          sed -i "s|v[0-9]*\.[0-9]*\.[0-9]*-green|v${VERSION}-green|g" profile/README.md
+          sed -i "s|released-v[0-9]*\.[0-9]*\.[0-9]*|released-v${VERSION}|g" profile/README.md
+
+          # Check if there are changes
+          if git diff --quiet; then
+            echo "No changes to README"
+            exit 0
+          fi
+
+          # Create branch and PR
+          BRANCH="chore/update-schema-v${VERSION}"
+          git checkout -b "$BRANCH"
+          git add profile/README.md
+          git commit -m "Update birdlife-schema version to v${VERSION}"
+          git push origin "$BRANCH"
+
+          # Create PR
+          gh pr create \
+            --repo birdlife-tools/.github \
+            --title "Update birdlife-schema to v${VERSION}" \
+            --body "Automated update from birdlife-schema release workflow." \
+            --head "$BRANCH" \
+            --base main
