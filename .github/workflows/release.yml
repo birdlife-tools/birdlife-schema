@@ -88,9 +88,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Update version badge in README
+          # Update version badge in README (badge URL, alt text, and release tag link)
           sed -i "s|v[0-9]*\.[0-9]*\.[0-9]*-green|v${VERSION}-green|g" profile/README.md
           sed -i "s|released-v[0-9]*\.[0-9]*\.[0-9]*|released-v${VERSION}|g" profile/README.md
+          sed -i "s|\[!\[v[0-9]*\.[0-9]*\.[0-9]*\]|[![v${VERSION}]|g" profile/README.md
+          sed -i "s|/releases/tag/v[0-9]*\.[0-9]*\.[0-9]*|/releases/tag/v${VERSION}|g" profile/README.md
 
           # Check if there are changes
           if git diff --quiet; then
