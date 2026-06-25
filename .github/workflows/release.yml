@@ -46,3 +46,24 @@ jobs:
             See [CHANGELOG.md](https://github.com/birdlife-tools/birdlife-schema/blob/main/CHANGELOG.md) for details.
           draft: false
           prerelease: ${{ contains(steps.version.outputs.version, '-') }}
+
+      - name: Setup Node.js
+        if: steps.check_tag.outputs.exists == 'false'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Sync package.json version
+        if: steps.check_tag.outputs.exists == 'false'
+        run: npm version ${{ steps.version.outputs.version }} --no-git-tag-version
+
+      - name: Install dependencies
+        if: steps.check_tag.outputs.exists == 'false'
+        run: npm ci
+
+      - name: Publish to npm
+        if: steps.check_tag.outputs.exists == 'false'
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
