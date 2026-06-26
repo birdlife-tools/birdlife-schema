@@ -130,6 +130,6 @@ jobs:
             -d @- <<EOF
           {
             "msgtype": "m.notice",
-            "body": "birdlife-schema v${VERSION} released | npm: https://www.npmjs.com/package/birdlife-schema/v/${VERSION} | Release: https://github.com/birdlife-tools/birdlife-schema/releases/tag/v${VERSION}"
+            "body": "birdlife-schema v${VERSION} released | npm: https://www.npmjs.com/package/@birdlife-tools/birdlife-schema/v/${VERSION} | Release: https://github.com/birdlife-tools/birdlife-schema/releases/tag/v${VERSION}"
           }
           EOF
