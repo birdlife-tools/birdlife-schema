@@ -114,3 +114,22 @@ jobs:
             --body "Automated update from birdlife-schema release workflow." \
             --head "$BRANCH" \
             --base main
+
+      - name: Notify Matrix
+        if: steps.check_tag.outputs.exists == 'false'
+        env:
+          MATRIX_TOKEN: ${{ secrets.MATRIX_ACCESS_TOKEN }}
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          ROOM_ID="!FZUVDnShZShRfcvsHk:matrix.org"
+
+          MESSAGE="🚀 **birdlife-schema v${VERSION}** released
+
+          📦 npm: https://www.npmjs.com/package/birdlife-schema/v/${VERSION}
+          📋 Release: https://github.com/birdlife-tools/birdlife-schema/releases/tag/v${VERSION}"
+
+          curl -s -X PUT \
+            "https://matrix.org/_matrix/client/v3/rooms/${ROOM_ID}/send/m.room.message/$(date +%s)" \
+            -H "Authorization: Bearer ${MATRIX_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d "{\"msgtype\": \"m.notice\", \"body\": \"${MESSAGE}\"}"
